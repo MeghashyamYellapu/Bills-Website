@@ -4,10 +4,7 @@ import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
 
-export async function registerRoutes(
-  httpServer: Server,
-  app: Express
-): Promise<Server> {
+export function registerRoutes(httpServer: Server, app: Express): Server {
   app.get(api.receipts.list.path, async (req, res) => {
     const receipts = await storage.getReceipts();
     res.json(receipts);
